@@ -1,0 +1,31 @@
+#lang racket
+
+(define (cube-root x)
+  (define (dist x y)
+    (abs (- x y)))
+  (define (abs x)
+    (if (< x 0)
+        (- x)
+        x))
+  (define (dvd-sum-by-3 z y)
+  (/ (+ z y) 3))
+  (define (improve guess)
+    (dvd-sum-by-3 (* 2 guess) (/ x (* guess guess))))
+  (define (good-enough? g)
+    (< (dist x (* g g g))
+       0.00001))
+  (define (iter guess)
+    (if (good-enough? guess)
+        guess
+        (iter (improve guess))))
+  
+  (iter 0.99))
+
+;testy
+(cube-root 2)
+(cube-root 3)
+(cube-root -2)
+(cube-root 125)
+(cube-root -8)
+(cube-root 1024)
+

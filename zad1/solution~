@@ -1,0 +1,28 @@
+#lang racket
+
+(define (square x)
+  (* x x))
+
+(define (dist x y)
+  (abs (- x y)))
+
+(define (abs x)
+  (if (< x 0)
+      (- x)
+      x))
+
+(define (cube-root x)
+  (define (dvd-sum-by-3 z y)
+  (/ (+ z y) 3))
+  (define (improve guess)
+    (dvd-sum-by-3 (* 2 guess) (/ x (square guess)))
+  (define (good-enough? g)
+    (< (dist x (square g))
+       0.0001))
+  (define (iter guess)
+    (if (good-enough? guess)
+        guess
+        (iter (improve guess))))
+  
+  (iter 1.0)))
+
