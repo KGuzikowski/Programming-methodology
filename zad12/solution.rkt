@@ -75,10 +75,10 @@
 (define (annotate-expression e)
   (define (annotate-expression-env e env)
     (match e
-      [(const n) (const n)]
-      [(binop op l r) (binop op (annotate-expression-env l env) (annotate-expression-env r env))]
-      [(var-expr x) (let [(bound (env-lookup x env))]
-                      (if (null? bound) (var-free x) (var-bound bound x)))]
+      [(const n)              (const n)]
+      [(binop op l r)         (binop op (annotate-expression-env l env) (annotate-expression-env r env))]
+      [(var-expr x)           (let [(bound (env-lookup x env))]
+                                (if (null? bound) (var-free x) (var-bound bound x)))]
       [(let-expr pos x e1 e2) (let [(new-env (env-add x pos env))]
                                 (let-expr pos x (annotate-expression-env e1 new-env) (annotate-expression-env e2 new-env)))]))
   (annotate-expression-env e env-empty))
