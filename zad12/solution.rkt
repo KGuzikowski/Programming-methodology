@@ -1,6 +1,6 @@
 #lang racket
 
-(provide annotate-expression)
+(provide (struct-out const) (struct-out binop) (struct-out pos) (struct-out var-expr) (struct-out let-expr) (struct-out var-free) (struct-out var-bound) (struct-out environ) annotate-expression)
 
 ;; ---------------
 ;; Jezyk wejsciowy
