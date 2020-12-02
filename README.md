@@ -1,4 +1,3 @@
-# metody-programowania---UWr
-Zadania z przedmiotu metody programowania - UWr.
-
-Kod pisany  w języku funkcyjnym Racket.
+# Programming methodology
+Programming methodology was a university course.
+In this repo are tasks' solutions made in Racket.
